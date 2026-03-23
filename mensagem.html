@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>pra você</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    #box {
+      max-width: 600px;
+      text-align: center;
+      font-size: 20px;
+      white-space: pre-line;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="box"></div>
+
+<script>
+const text = `
+
+Ei Ei...
+
+Some não, tem mais coisa...
+
+Eu te amo... 
+Eu...
+Te...
+Amo...
+
+Eu poderia voltar no tempo...
+mudar muita coisa...
+
+Mas tem uma que eu não mudaria.
+
+Ter te encontrado.
+
+Porque, no meio de tudo que me aconteceu...
+
+você virou algo que eu não esperava.
+
+E talvez eu não saiba explicar direito...
+
+mas eu sei que é muito importante.
+
+Então o meu ultimo recado é...
+
+...
+...
+...
+
+Tem algo pra você em algum lugar, se achar é seu.
+
+`;
+
+// efeito de digitação
+const box = document.getElementById("box");
+let i = 0;
+
+setTimeout(() => {
+  box.style.opacity = 1;
+
+  let interval = setInterval(() => {
+    box.innerHTML += text[i];
+    i++;
+
+    if (i >= text.length) clearInterval(interval);
+  }, 30);
+
+}, 500);
+</script>
+
+</body>
+</html>
