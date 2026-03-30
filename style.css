@@ -123,6 +123,6 @@ canvas {
 
 /* MOBILE */
 @media (max-width: 500px) {
-  #text { font-size: 16px; }
-  #choices button { font-size: 14px; padding: 12px; }
+  #text { font-size: 20px; }
+  #choices button { font-size: 16px; padding: 14px; }
 }
