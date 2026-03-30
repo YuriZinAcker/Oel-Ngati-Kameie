@@ -22,6 +22,7 @@ canvas {
   top: 0;
   left: 0;
   z-index: 0;
+  pointer-events: none; /* IMPORTANTE */
 }
 
 /* CONTAINER */
@@ -31,14 +32,11 @@ canvas {
   width: 90%;
   max-width: 500px;
   padding: 25px;
-
-  background: rgba(48, 36, 34, 0.6);
+  background: rgba(48, 36, 34, 0.65);
   border-radius: 20px;
   backdrop-filter: blur(12px);
-
-  box-shadow: 0 0 40px rgb(255, 255, 255);
+  box-shadow: 0 0 60px rgba(0,0,0,0.6);
   text-align: center;
-
   animation: fadeIn 1.2s ease;
 }
 
@@ -52,8 +50,8 @@ canvas {
   transition: opacity 0.5s ease;
 }
 
-/* BOTÕES */
-.choices button {
+/* BOTÕES (CORRIGIDO → era .choices) */
+#choices button {
   width: 100%;
   margin: 8px 0;
   padding: 14px;
@@ -64,19 +62,24 @@ canvas {
   font-size: 15px;
   cursor: pointer;
   transition: 0.25s;
+  position: relative;
 }
 
-.choices button:hover {
-  transform: scale(1.05);
+#choices button:hover {
+  transform: scale(1.05) rotate(1deg);
   box-shadow: 0 0 12px rgba(247, 43, 230, 0.6);
 }
 
-.choices button:active {
+#choices button:nth-child(odd):hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+#choices button:active {
   transform: scale(0.97);
 }
 
-/* FLASH (tempo parado) */
-.flash {
+/* FLASH (CORRIGIDO → era .flash) */
+#flash {
   position: fixed;
   top: 0;
   left: 0;
@@ -86,24 +89,13 @@ canvas {
   opacity: 0;
   pointer-events: none;
   z-index: 3;
+  transition: opacity 0.2s;
 }
 
 /* ANIMAÇÕES */
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(10px);}
   to {opacity: 1; transform: translateY(0);}
-}
-
-/* MOBILE */
-@media (max-width: 500px) {
-  #text {
-    font-size: 16px;
-  }
-
-  .choices button {
-    font-size: 14px;
-    padding: 12px;
-  }
 }
 
 .glitch {
@@ -119,18 +111,6 @@ canvas {
   100% { transform: translate(0); }
 }
 
-.choices button {
-  position: relative;
-}
-
-.choices button:hover {
-  transform: scale(1.05) rotate(1deg);
-}
-
-.choices button:nth-child(odd):hover {
-  transform: scale(1.05) rotate(-1deg);
-}
-
 .glitch-char {
   color: #c20fff;
   animation: glitchChar 0.2s;
@@ -141,6 +121,8 @@ canvas {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-#flash {
-  transition: opacity 0.2s;
+/* MOBILE */
+@media (max-width: 500px) {
+  #text { font-size: 16px; }
+  #choices button { font-size: 14px; padding: 12px; }
 }
